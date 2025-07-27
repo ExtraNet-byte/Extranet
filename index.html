@@ -6,459 +6,1289 @@
     <title>Planes de Conexión a Internet – ExtraNet (Online)</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Variables de color esmeralda */
+        /* Definición de variables de color esmeralda */
         :root {
-            --emerald-light: #66CDAA;
+            --emerald-light: #66CDAA; /* Este es el verde claro original */
             --emerald-medium: #3CB371;
-            --emerald-primary: #2E8B57;
-            --emerald-vibrant: #3D9970;
-            --emerald-dark: #228B22;
-            --emerald-very-dark: #1A521A;
+            --emerald-primary: #2E8B57; /* Un verde bosque oscuro, base, usado ahora para h2 */
+            --emerald-vibrant: #3D9970; /* Un verde más brillante para acentos */
+            --emerald-dark: #228B22; /* Un verde más oscuro para hover */
+            --emerald-very-dark: #1A521A; /* Para gradientes profundos */
         }
+
+        /* Base Styles */
         body {
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Rajdhani', sans-serif; /* Caligrafía mecánica y moderna */
+            /* Fondo con gradiente platino tornasolado */
             background: linear-gradient(135deg, #ECEFF1 0%, #F0F4F7 50%, #ECEFF1 100%);
-            color: #263238;
-            margin: 0; padding: 0; line-height: 1.5;
+            color: #263238; /* Texto principal más oscuro para contraste */
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+
+            /* Estilos para la imagen de fondo actualizada */
             background-image: url('https://images.unsplash.com/photo-1526657782461-9fe13402a841?q=80&w=692&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover; background-position: center; background-attachment: fixed; background-blend-mode: overlay;
+            background-size: cover; /* Cubre todo el área */
+            background-position: center; /* Centra la imagen */
+            background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+            background-blend-mode: overlay; /* Mezcla la imagen con el gradiente existente para sinergia */
         }
-        .container {max-width: 72rem; margin: auto; padding: 1rem;}
-        @media (min-width: 768px) {.container {padding: 2rem;}}
+        .container {
+            width: 100%;
+            max-width: 72rem; /* max-w-6xl */
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1rem; /* p-4 */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .container {
+                padding: 2rem; /* md:p-8 */
+            }
+        }
+
+        /* Futuristic Title - Diseño Minimalista y Moderno */
         .futuristic-title {
-            font-family: 'Orbitron', sans-serif; color: #000;
-            font-size: 3.5rem; line-height: 1; font-weight: 800; margin-bottom: 1rem;
-            position: relative; overflow: hidden; display: inline-block; padding: 0 0.5rem; cursor: pointer;
+            font-family: 'Orbitron', sans-serif; /* Fuente futurista */
+            color: #000; /* Color negro para el título */
+            font-size: 3.5rem; /* Tamaño para impacto */
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative; /* Necesario para la animación de pseudo-elemento */
+            overflow: hidden; /* Oculta el destello cuando está fuera del texto */
+            display: inline-block; /* Para que el destello se ajuste al texto */
+            padding: 0 0.5rem; /* Pequeño padding para el destello */
+            cursor: pointer; /* Añadido para indicar que es clickeable */
         }
         .futuristic-title::before {
-            content: ''; position: absolute; top: 0; left: -75%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-20deg); animation: flash 3s infinite;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%; /* Comienza desde fuera de la izquierda */
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-20deg); /* Inclinación para un efecto de destello sesgado */
+            animation: flash 3s infinite; /* Animación de destello */
         }
-        @keyframes flash {0%{left:-75%} 50%{left:125%} 100%{left:-75%}}
-        @media (min-width:768px){.futuristic-title{font-size:4.5rem}}
+
+        @keyframes flash {
+            0% { left: -75%; }
+            50% { left: 125%; }
+            100% { left: -75%; }
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            .futuristic-title {
+                font-size: 4.5rem; /* Más grande en escritorio */
+            }
+        }
+
+        /* IA Free Icon */
         .ia-free-icon {
-            display: inline-flex; align-items: center; justify-content: center;
-            background: var(--emerald-primary); color: #fff; font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem; font-weight: 700; padding: .4rem 1rem; border-radius: 9999px;
-            margin-top: -.5rem; cursor: pointer; transition: all .3s; box-shadow: 0 4px 6px rgba(0,0,0,.1);
-            position: relative; overflow: hidden; z-index: 2;
+            display: inline-flex; /* Usar flexbox para centrar contenido */
+            align-items: center; /* Centrar verticalmente */
+            justify-content: center;
+            background-color: var(--emerald-primary); /* Fondo verde esmeralda */
+            color: #ffffff; /* Texto blanco */
+            font-family: 'Orbitron', sans-serif; /* Misma fuente que el título principal */
+            font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+            font-weight: 700;
+            padding: 0.4rem 1rem; /* Padding para el icono */
+            border-radius: 9999px; /* Completamente redondeado */
+            margin-top: -0.5rem; /* Acercarlo al título principal */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative; /* Necesario para el destello */
+            overflow: hidden; /* Oculta el destello cuando está fuera */
+            z-index: 2; /* Asegura que esté por encima de otros elementos */
         }
-        .ia-free-icon:hover {background: var(--emerald-dark); transform: translateY(-2px); box-shadow: 0 6px 8px rgba(0,0,0,.15);}
+
+        .ia-free-icon:hover {
+            background-color: var(--emerald-dark); /* Color más oscuro al pasar el ratón */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
         .ia-free-icon::before {
-            content: ''; position: absolute; top: 0; left: -100%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.7) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-20deg); animation: flash-icon 2s infinite .5s;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%; /* Comienza desde fuera de la izquierda */
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-20deg); /* Inclinación para un efecto de destello sesgado */
+            animation: flash-icon 2s infinite 0.5s; /* Animación de destello, con un pequeño retraso */
         }
-        @keyframes flash-icon {0%{left:-100%} 50%{left:150%} 100%{left:-100%}}
-        header p {font-size:1.5rem; line-height:1.75rem; color:#37474F; font-weight:700; margin-bottom:1.5rem;}
-        @media (min-width:768px){header p{font-size:2rem}}
-        .general-description-text {font-size:1.25rem;line-height:1.75rem;color:#455A64;font-weight:500;}
-        @media (min-width:768px){.general-description-text{font-size:1.5rem}}
-        h2 {font-size:1.75rem;line-height:2rem;font-weight:700;text-align:center;margin-bottom:1.5rem;color:var(--emerald-primary);}
+
+        @keyframes flash-icon {
+            0% { left: -100%; }
+            50% { left: 150%; }
+            100% { left: -100%; }
+        }
+
+
+        /* Header Text - Aumento de tamaño y grosor */
+        header p {
+            font-size: 1.5rem;
+            line-height: 1.75rem;
+            color: #37474F; /* Color de texto ajustado */
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            header p {
+                font-size: 2rem;
+            }
+        }
+
+        /* Estilo general para los párrafos de descripción */
+        .general-description-text {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            color: #455A64; /* Color de texto ajustado para consistencia */
+            font-weight: 500; /* Grosor de fuente ajustado para consistencia */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .general-description-text {
+                font-size: 1.5rem; /* Tamaño de fuente en escritorio ajustado para consistencia */
+            }
+        }
+
+        /* Section Titles (h2) - Ahora con el mismo estilo que h3 de Política de Garantía */
+        h2 {
+            font-size: 1.75rem;
+            line-height: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--emerald-primary);
+            text-shadow: none;
+        }
+
+        /* Call to Action Button */
         .cta-button {
-            display:inline-block;background:var(--emerald-primary);color:#fff;font-weight:700;padding:1rem 2.5rem;border-radius:9999px;
-            transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
-            font-size:1.25rem;text-transform:uppercase;letter-spacing:.05em;transform:scale(1);
+            display: inline-block;
+            background-color: var(--emerald-primary); /* Color esmeralda principal */
+            color: #ffffff; /* Texto blanco */
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transform: scale(1);
         }
-        .cta-button:hover {background:var(--emerald-dark);transform:scale(1.05);}
-        section, .collapsible-section, #personalized-plan-section, #ai-universe-section, #who-we-are-section, #faq-section, #warranty-policy {
-            margin-bottom:4rem; background:rgba(255,255,255,.7); padding:2rem; border-radius:1rem;
-            box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1); color:#1a1a1a;
+        .cta-button:hover {
+            background-color: var(--emerald-dark); /* Esmeralda más oscuro al pasar el ratón */
+            transform: scale(1.05);
         }
-        main#plans-section {background: linear-gradient(180deg,rgba(245,248,250,.6),rgba(240,244,247,.6)); box-shadow:inset 0 2px 4px 0 rgba(0,0,0,.06);}
-        #universal-benefits .grid {display: grid; grid-template-columns: 1fr; gap:2rem;text-align:center;}
-        @media (min-width:768px){#universal-benefits .grid{grid-template-columns:repeat(2,1fr)}}
-        @media (min-width:1024px){#universal-benefits .grid{grid-template-columns:repeat(4,1fr)}}
-        #universal-benefits .grid>div {padding:1.5rem;border-radius:.75rem;background:rgba(255,255,255,.7);border-bottom:4px solid var(--emerald-vibrant);box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.06);transition:.3s;}
-        #universal-benefits .grid>div:hover {box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);}
-        #universal-benefits .grid>div span {font-size:3.125rem;margin-bottom:.75rem;display:block;}
-        #universal-benefits .grid>div h3 {font-weight:700;font-size:1.5rem;margin-top:.5rem;color:#1a1a1a;}
-        #universal-benefits .grid>div p {font-size:1rem;color:#333;font-weight:500;margin-top:.25rem;}
-        #plan-tabs {display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;justify-content:center;background:rgba(255,255,255,.7);padding:1rem;border-radius:1rem;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.06);}
-        @media (min-width:640px){#plan-tabs{flex-direction:row}}
+
+        /* Section Styling - Hacemos las secciones translúcidas */
+        section {
+            margin-bottom: 4rem;
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con 70% de opacidad */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            color: #1a1a1a; /* Texto muy oscuro para legibilidad */
+        }
+        main#plans-section {
+            /* Fondo con gradiente sutil para la sección de planes, ahora también translúcido */
+            background: linear-gradient(180deg, rgba(245, 248, 250, 0.6), rgba(240, 244, 247, 0.6)); /* Gradiente con 60% de opacidad */
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        /* Universal Benefits Grid - Hacemos los elementos translúcidos */
+        #universal-benefits .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            #universal-benefits .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            #universal-benefits .grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+        #universal-benefits .grid > div {
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            /* Fondo translúcido para los beneficios */
+            background: rgba(255, 255, 255, 0.7); /* Blanco con 70% de opacidad */
+            border-bottom: 4px solid var(--emerald-vibrant); /* Borde esmeralda vibrante */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            transition-property: box-shadow;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+        #universal-benefits .grid > div:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        #universal-benefits .grid > div span {
+            font-size: 3.125rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        #universal-benefits .grid > div h3 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            color: #1a1a1a; /* Texto muy oscuro */
+        }
+        #universal-benefits .grid > div p {
+            font-size: 1rem;
+            color: #333333; /* Texto oscuro */
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        /* Plan Tabs - Hacemos las pestañas translúcidas */
+        #plan-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con 70% de opacidad */
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+        }
+        @media (min-width: 640px) {
+            #plan-tabs {
+                flex-direction: row;
+            }
+        }
+
         .tab-button {
-            flex:1;padding:1.5rem;text-align:center;cursor:pointer;transition:.3s;position:relative;border-radius:.75rem;
-            background:rgba(255,255,255,.7);color:#1a1a1a;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.06);
-            transform:translateY(0);border-bottom:4px solid #CFD8DC;z-index:1;
+            flex: 1;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+            position: relative;
+            border-radius: 0.75rem; /* Rectangular con esquinas suaves */
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con 70% de opacidad */
+            color: #1a1a1a; /* Texto muy oscuro */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            transform: translateY(0);
+            border-bottom: 4px solid #CFD8DC; /* Borde sutil platino */
+            z-index: 1;
+        }
+        .tab-button p {
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .tab-button:hover {
-            transform:translateY(-4px);background:linear-gradient(45deg,rgba(102,205,170,.8),rgba(60,179,113,.8));color:var(--emerald-primary);
-            box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);border-bottom-color:var(--emerald-vibrant);z-index:2;
+            transform: translateY(-4px);
+            /* Gradiente tornasolado al pasar el ratón, ahora translúcido */
+            background: linear-gradient(45deg, rgba(102, 205, 170, 0.8), rgba(60, 179, 113, 0.8)); /* Esmeralda claro a medio */
+            color: var(--emerald-primary); /* Esmeralda principal al pasar el ratón */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-bottom-color: var(--emerald-vibrant); /* Borde esmeralda vibrante al pasar el ratón */
+            z-index: 2;
         }
         .tab-button.active {
-            background:rgba(46,139,87,.9);color:#fff;transform:translateY(-6px) scale(1.02);border-bottom-color:var(--emerald-vibrant);
-            box-shadow:0 12px 20px -4px rgba(61,153,112,.4),0 6px 8px -3px rgba(34,139,34,.3);z-index:5;
+            background-color: rgba(46, 139, 87, 0.9); /* Esmeralda principal con 90% de opacidad */
+            color: #ffffff; /* Texto blanco */
+            transform: translateY(-6px) scale(1.02);
+            border-bottom-color: var(--emerald-vibrant); /* Borde esmeralda vibrante */
+            box-shadow: 0 12px 20px -4px rgba(61, 153, 112, 0.4), 0 6px 8px -3px rgba(34, 139, 34, 0.3); /* Sombra esmeralda */
+            z-index: 5;
         }
-        .tab-button .text-lg.text-slate-500 {color:#333;}
-        .tab-button.active .text-lg.text-slate-500 {color:rgba(255,255,255,.8);}
+        .tab-button.active p {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        /* Ajuste para el color del texto secundario en las pestañas */
+        .tab-button .text-lg.text-slate-500 {
+            color: #333333; /* Color oscuro para mayor contraste */
+        }
+        .tab-button.active .text-lg.text-slate-500 {
+            color: rgba(255, 255, 255, 0.8); /* Blanco translúcido cuando la pestaña está activa */
+        }
+
+
+        /* Tab Badge (MÁS POPULAR) */
         .tab-badge {
-            position:absolute;left:50%;transform:translate(-50%,-50%);top:-15px;color:#fff;font-weight:700;font-size:1rem;
-            padding:.5rem 1.5rem;border-radius:9999px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
-            background:linear-gradient(45deg,var(--emerald-vibrant),var(--emerald-dark));white-space:nowrap;z-index:10;pointer-events:none;min-width:150px;
-            border:2px solid rgba(255,255,255,.5);text-shadow:0 2px 4px rgba(0,0,0,.3);
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            top: -15px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* Gradiente esmeralda para el badge */
+            background: linear-gradient(45deg, var(--emerald-vibrant), var(--emerald-dark));
+            white-space: nowrap;
+            z-index: 10;
+            pointer-events: none;
+            min-width: 150px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
+
+        /* Specific styles for "Popular" tab (Intermedio) */
         .tab-popular.active {
-            border-bottom:5px solid var(--emerald-dark);background:linear-gradient(135deg,rgba(46,139,87,.95),rgba(34,139,34,.95));
-            color:#fff;box-shadow:0 20px 35px -8px rgba(61,153,112,.6),0 12px 15px -6px rgba(34,139,34,.5);transform:translateY(-10px) scale(1.08);z-index:15;animation:pulse-glow 1.5s infinite alternate;
+            border-bottom: 5px solid var(--emerald-dark);
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.95), rgba(34, 139, 34, 0.95)); /* Esmeralda principal a oscuro con 95% de opacidad */
+            color: #ffffff;
+            box-shadow: 0 20px 35px -8px rgba(61, 153, 112, 0.6), 0 12px 15px -6px rgba(34, 139, 34, 0.5); /* Sombra esmeralda */
+            transform: translateY(-10px) scale(1.08);
+            z-index: 15;
+            animation: pulse-glow 1.5s infinite alternate;
         }
+        /* Specific styles for "Premium" tab */
         #plan-tabs button[data-plan="premium"].active {
-            border-bottom:6px solid var(--emerald-vibrant);background:linear-gradient(135deg,rgba(34,139,34,.95),rgba(26,82,26,.95));
-            color:#fff;box-shadow:0 25px 40px -10px rgba(61,153,112,.8),0 15px 20px -8px rgba(34,139,34,.7);
-            transform:translateY(-12px) scale(1.1);filter:brightness(1.2);z-index:20;animation:pulse-border-glow 2s infinite alternate;
+            border-bottom: 6px solid var(--emerald-vibrant);
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.95), rgba(26, 82, 26, 0.95)); /* Esmeralda oscuro a muy oscuro con 95% de opacidad */
+            color: #ffffff;
+            box-shadow: 0 25px 40px -10px rgba(61, 153, 112, 0.8), 0 15px 20px -8px rgba(34, 139, 34, 0.7); /* Sombra esmeralda */
+            transform: translateY(-12px) scale(1.1);
+            filter: brightness(1.2);
+            z-index: 20;
+            animation: pulse-border-glow 2s infinite alternate;
         }
-        @keyframes pulse-glow {from{box-shadow:0 20px 35px -8px rgba(61,153,112,.6),0 12px 15px -6px rgba(34,139,34,.5);}to{box-shadow:0 25px 45px -10px rgba(61,153,112,.8),0 15px 20px -8px rgba(34,139,34,.7);}}
-        @keyframes pulse-border-glow {from{border-bottom-color:var(--emerald-vibrant);}to{border-bottom-color:var(--emerald-primary);}}
-        .tab-button .font-bold.text-3xl {font-size:2.5rem;font-weight:700;}
-        .tab-button .text-xl {font-size:1.5rem;font-weight:600;}
-        .tab-button .text-lg {font-size:1rem;font-weight:500;}
-        #plan-details-display>div {background:rgba(255,255,255,.7);padding:2rem;border-radius:1rem;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);}
-        #plan-details-display .grid {display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;}
-        @media (min-width:768px){#plan-details-display .grid{grid-template-columns:repeat(2,1fr);}}
-        #plan-details-display img {border-radius:.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.06);margin-bottom:1.5rem;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;}
-        #plan-details-display p {margin-bottom:1rem;}
-        #plan-details-display h4 {font-weight:700;font-size:1.5rem;margin-bottom:.75rem;color:var(--emerald-primary);}
-        #plan-details-display ul {list-style:none;padding-left:0;margin:0;}
-        #plan-details-display ul li {color:#333;display:flex;align-items:center;font-size:1.125rem;font-weight:600;}
-        #plan-details-display ul.list-disc li {list-style-type:disc;list-style-position:inside;padding-left:1rem;}
-        #plan-details-display ul li span.mr-2 {margin-right:.5rem;}
-        #plan-details-display ul li span.text-[#00A1E4] {color:var(--emerald-vibrant);}
-        #plan-details-display ul li span.text-[#0077B6] {color:var(--emerald-primary);}
-        #plan-details-display ul li span.text-[#005082] {color:var(--emerald-dark);}
-        /* Collapsible & FAQ */
-        .collapsible-header {font-size:1.75rem;line-height:2rem;font-weight:700;text-align:center;color:var(--emerald-primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding-bottom:.5rem;border-bottom:1px solid rgba(0,0,0,.1);}
-        .collapsible-header::after {content:'▼';font-size:1.2rem;margin-left:1rem;transition:transform .3s;}
-        .collapsible-header.active::after {content:'▲';}
-        .collapsible-content {max-height:0;overflow:hidden;transition:max-height .7s,padding .7s; padding-top:0;padding-bottom:0;}
-        .collapsible-content.open {max-height:5000px;padding-top:1.5rem;padding-bottom:1rem;}
-        #personalized-plan-section.collapsed-glowing {animation: glowing-border 2s infinite alternate;box-shadow:0 0 15px rgba(61,153,112,.7);}
-        @keyframes glowing-border {from{box-shadow:0 0 15px rgba(61,153,112,.7),0 20px 25px -5px rgba(0,0,0,.1);}to{box-shadow:0 0 25px rgba(61,153,112,1),0 20px 25px -5px rgba(0,0,0,.2);}}
-        /* FAQ */
-        .faq-item {margin-bottom:1rem;border-bottom:1px solid rgba(0,0,0,.05);padding-bottom:1rem;}
-        .faq-item:last-child {border-bottom: none;margin-bottom:0;padding-bottom:0;}
-        .faq-question {font-weight:600;font-size:1.125rem;color:#1a1a1a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;}
-        .faq-question::after {content:'+';font-size:1.5rem;margin-left:.5rem;transition:transform .3s;}
-        .faq-question.active::after {content:'-';}
-        .faq-answer {max-height:0;overflow:hidden;transition:max-height .5s,padding .5s;padding-top:0;padding-bottom:0;}
-        .faq-answer.open {max-height:500px;padding-top:.5rem;padding-bottom:.5rem;}
-        .faq-answer p {margin-bottom:0;}
-        /* AI Carousel */
-        #ai-carousel-container {width:100%;max-width:600px;margin:0 auto 1.5rem auto;overflow:hidden;border-radius:.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.06);position:relative;aspect-ratio:16/9;}
-        #ai-carousel-container img {width:100%;height:100%;object-fit:cover;display:block;transition:opacity 1s;opacity:1;}
-        @keyframes heartbeat {0%{transform:scale(1);}50%{transform:scale(1.01);}100%{transform:scale(1);}}
-        .heartbeat-animation {animation:heartbeat 1s;}
+
+        /* Keyframes for animations (ajustadas a esmeralda) */
+        @keyframes pulse-glow {
+            from { box-shadow: 0 20px 35px -8px rgba(61, 153, 112, 0.6), 0 12px 15px -6px rgba(34, 139, 34, 0.5); }
+            to { box-shadow: 0 25px 45px -10px rgba(61, 153, 112, 0.8), 0 15px 20px -8px rgba(34, 139, 34, 0.7); }
+        }
+        @keyframes pulse-border-glow {
+            from {
+                border-bottom-color: var(--emerald-vibrant);
+                box-shadow: 0 25px 40px -10px rgba(61, 153, 112, 0.8), 0 153, 112, 0.8), 0 15px 20px -8px rgba(34, 139, 34, 0.7);
+            }
+            to {
+                border-bottom-color: var(--emerald-primary);
+                box-shadow: 0 30px 50px -12px rgba(61, 153, 112, 1), 0 20px 25px -10px rgba(34, 139, 34, 0.9);
+            }
+        }
+
+        /* Font sizes for larger tabs */
+        .tab-button .font-bold.text-3xl {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .tab-button .text-xl {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .tab-button .text-lg {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Plan Details Display - Hacemos los detalles del plan translúcidos */
+        #plan-details-display > div {
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con 70% de opacidad */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        #plan-details-display .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            #plan-details-display .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        #plan-details-display img {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1.5rem;
+            width: 100%;
+            height: auto; /* Mantener auto para adaptabilidad */
+            aspect-ratio: 16 / 9; /* Forzar una proporción de aspecto 16:9 */
+            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+        }
+        /* Párrafos de descripción del plan ahora usan la clase general */
+        #plan-details-display p {
+            margin-bottom: 1rem;
+        }
+        #plan-details-display h4 { /* Subtítulos dentro de los detalles del plan */
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--emerald-primary); /* Color esmeralda principal */
+        }
+        #plan-details-display ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            space-y: 0.5rem;
+        }
+        #plan-details-display ul li { /* Elementos de lista de los detalles del plan */
+            color: #333333; /* Texto oscuro */
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        #plan-details-display ul.list-disc li {
+            list-style-type: disc;
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+        #plan-details-display ul li span.mr-2 {
+            margin-right: 0.5rem;
+        }
+        #plan-details-display ul li span.text-[#00A1E4] { color: var(--emerald-vibrant); } /* Reemplazado por esmeralda vibrante */
+        #plan-details-display ul li span.text-[#0077B6] { color: var(--emerald-primary); } /* Reemplazado por esmeralda principal */
+        #plan-details-display ul li span.text-[#005082] { color: var(--emerald-dark); } /* Reemplazado por esmeralda oscuro */
+
+        /* Warranty Policy - Hacemos la política de garantía translúcida */
+        #warranty-policy {
+            margin-top: 4rem;
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con 70% de opacidad */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #CFD8DC; /* Borde sutil platino */
+            color: #1a1a1a; /* Texto muy oscuro */
+        }
+        #warranty-policy h3 {
+            font-size: 1.75rem;
+            line-height: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--emerald-primary); /* Color esmeralda principal */
+        }
+        /* Párrafos de la política de garantía ahora usan la clase general */
+        #warranty-policy p {
+            margin-bottom: 1rem;
+        }
+        #warranty-policy ul {
+            list-style: disc;
+            list-style-position: inside;
+            padding-left: 1rem;
+            color: #333333; /* Texto oscuro */
+            margin-top: 0;
+            margin-bottom: 0;
+            space-y: 1rem;
+        }
+        #warranty-policy ul li { /* Elementos de lista de la política de garantía */
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        #warranty-policy ul li span {
+            font-weight: 600;
+            color: var(--emerald-dark); /* Color esmeralda oscuro */
+        }
+        #warranty-policy p.mt-6 {
+            margin-top: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid #CFD8DC; /* Borde sutil platino */
+        }
+        /* El h2 del footer ahora usa el estilo general de h2 */
+        /* footer h2 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-weight: 700;
+            color: var(--emerald-dark);
+            margin-bottom: 1rem;
+        } */
+        @media (min-width: 768px) {
+            footer h2 {
+                font-size: 2.25rem; /* Mantener este tamaño para el footer h2 en desktop si se desea que sea más grande que los otros h2 */
+            }
+        }
+        /* Párrafos del footer ahora usan la clase general */
+        footer p {
+            margin-top: 0.75rem;
+            margin-bottom: 2rem;
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        footer .cta-button {
+            padding: 1rem 3rem;
+        }
+
+        /* Estilos para la sección de recomendación de plan - Hacemos la sección translúcida */
+        #personalized-plan-section {
+            margin-top: 4rem;
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con 70% de opacidad */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            color: #1a1a1a; /* Texto muy oscuro */
+        }
+        /* El h2 de esta sección ahora usa el estilo general de h2 */
+        /* #personalized-plan-section h2 {
+            margin-bottom: 2rem;
+            color: var(--emerald-primary);
+            text-shadow: none;
+        } */
+        /* Párrafo descriptivo de la sección de recomendación ahora usa la clase general */
+        #personalized-plan-section p.general-description-text {
+            margin-bottom: 1.5rem; /* Ajuste de margen para este párrafo específico */
+        }
+        #personalized-plan-section label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1a1a1a; /* Texto muy oscuro */
+        }
+        #personalized-plan-section select,
+        #personalized-plan-section .checkbox-group {
+            width: 100%;
+            max-width: 400px;
+            margin: 0.5rem auto 1.5rem auto;
+            padding: 0.75rem;
+            border: 1px solid #CFD8DC;
+            border-radius: 0.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            color: #1a1a1a; /* Texto muy oscuro */
+            background-color: rgba(248, 250, 252, 0.8); /* Fondo con 80% de opacidad */
+        }
+        #personalized-plan-section .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: rgba(248, 250, 252, 0.8); /* Fondo con 80% de opacidad */
+            border-radius: 0.5rem;
+            border: 1px solid #CFD8DC;
+        }
+        #personalized-plan-section .checkbox-group div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        #personalized-plan-section input[type="checkbox"] {
+            transform: scale(1.2);
+            accent-color: var(--emerald-primary); /* Color esmeralda principal */
+        }
+        #personalized-plan-section button {
+            background-color: var(--emerald-vibrant); /* Color esmeralda vibrante */
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1.125rem;
+        }
+        #personalized-plan-section button:hover {
+            background-color: var(--emerald-medium); /* Esmeralda medio al pasar el ratón */
+            transform: translateY(-2px);
+        }
+        #recommendation-result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(245, 248, 250, 0.7); /* Fondo sutil para el resultado con 70% de opacidad */
+            border: 1px solid #CFD8DC;
+            border-radius: 0.75rem;
+            text-align: left;
+            color: #1a1a1a; /* Texto muy oscuro */
+            height: auto; /* Asegura que la altura se ajuste al contenido */
+            display: block; /* Asegura que el contenido fluya normalmente */
+            width: 100%; /* Ocupa todo el ancho disponible */
+            box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+        #recommendation-result.loading {
+            font-style: italic;
+            color: #607D8B;
+        }
+
+        /* Estilos para el botón de "Ver detalles del Plan" */
+        .view-plan-details-btn {
+            background-color: var(--emerald-vibrant);
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            text-decoration: none; /* Eliminar subrayado de enlace */
+        }
+
+        .view-plan-details-btn:hover {
+            background-color: var(--emerald-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Estilos para las secciones desplegables */
+        .collapsible-section {
+            margin-bottom: 4rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            color: #1a1a1a;
+        }
+
+        .collapsible-header {
+            font-size: 1.75rem;
+            line-height: 2rem;
+            font-weight: 700;
+            text-align: center;
+            /* margin-bottom: 1.5rem; Este margen se aplica al header, no al contenido */
+            color: var(--emerald-primary);
+            text-shadow: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.5rem; /* Espacio entre título y contenido */
+            border-bottom: 1px solid rgba(0,0,0,0.1); /* Separador visual */
+        }
+
+        .collapsible-header::after {
+            content: '▼'; /* Flecha hacia abajo por defecto */
+            font-size: 1.2rem;
+            margin-left: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible-header.active::after {
+            content: '▲'; /* Flecha hacia arriba cuando está activo */
+            transform: rotate(0deg); /* No rotar si ya es una flecha hacia arriba */
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out; /* Transición para padding también */
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .collapsible-content.open {
+            /* max-height: 5000px; */ /* Eliminado, ahora se calcula dinámicamente */
+            padding-top: 1.5rem; /* Añadir padding cuando está abierto */
+            padding-bottom: 1rem; /* Añadir padding cuando está abierto */
+        }
+
+        /* Estilos específicos para la sección de recomendación con destello */
+        #personalized-plan-section.collapsed-glowing .collapsible-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        #personalized-plan-section.collapsed-glowing {
+            animation: glowing-border 2s infinite alternate;
+            box-shadow: 0 0 15px rgba(61, 153, 112, 0.7); /* Sombra inicial para el destello */
+        }
+
+        @keyframes glowing-border {
+            from {
+                box-shadow: 0 0 15px rgba(61, 153, 112, 0.7), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            }
+            to {
+                box-shadow: 0 0 25px rgba(61, 153, 112, 1), 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* FAQ Item styles */
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 1rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: #1a1a1a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active::after {
+            content: '-';
+            transform: rotate(0deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .faq-answer.open {
+            /* max-height: 5000px; */ /* Eliminado, ahora se calcula dinámicamente */
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .faq-answer p {
+            margin-bottom: 0; /* Eliminar margen inferior extra de los párrafos dentro de FAQ answer */
+        }
+
+        /* Styles for upward-expanding FAQ item */
+        #faq-item-pilot {
+            position: relative;
+        }
+
+        #faq-item-pilot .faq-answer {
+            position: absolute;
+            bottom: 100%; /* Position it above the question */
+            left: 0;
+            right: 0;
+            z-index: 10;
+            
+            /* Appearance */
+            background-color: rgba(236, 239, 241, 0.95); /* Slightly opaque background to stand out */
+            padding: 1.5rem;
+            margin-bottom: 0.5rem; /* Space between answer and question */
+            border-radius: 0.75rem;
+            box-shadow: 0 -10px 15px -3px rgba(0, 0, 0, 0.1), 0 -4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+
+            /* Animation setup */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0.4s;
+            
+            /* Override the JS-driven max-height animation */
+            max-height: none !important; 
+        }
+
+        #faq-item-pilot .faq-answer.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0s;
+        }
+
+
+        /* Estilos para el carrusel de imágenes de IA */
+        #ai-carousel-container {
+            width: 100%; /* Ocupa todo el ancho del contenedor padre */
+            max-width: 600px; /* Limita el ancho máximo del carrusel */
+            margin: 0 auto 1.5rem auto; /* Centra el carrusel y añade margen inferior */
+            overflow: hidden; /* Oculta partes de la imagen que se desbordan */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            position: relative; /* Necesario para posicionar elementos internos */
+            aspect-ratio: 16 / 9; /* Mantiene una proporción de aspecto consistente */
+        }
+        #ai-carousel-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+            display: block; /* Elimina espacio extra debajo de la imagen */
+            transition: opacity 1s ease-in-out; /* Transición suave para el cambio de imagen */
+            opacity: 1;
+        }
+        /* Animación de latido para la sección Quiénes Somos */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+        .heartbeat-animation {
+            animation: heartbeat 1s ease-in-out;
+        }
     </style>
-    <script defer>
-    document.addEventListener('DOMContentLoaded', () => {
-        // PLAN DATA
-        const planData = {
-            basico: {
-                title: '🌐 Plan Básico 2 Mb – $9 USD/mes',
-                description: 'Tu puerta de entrada a la conectividad esencial. Ideal para actividades ligeras y uso personal.',
-                image: 'https://images.unsplash.com/photo-1613650412348-807a33c111f8?q=80&w=2092&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                altText: 'Persona viendo series en una tablet, representando uso personal y esencial',
-                advantages: ['Baja latencia garantizada.', 'Acceso sin VPN.', 'Consumo libre 24/7.', 'Precio ultra competitivo.'],
-                entertainmentApps: [
-                    'Magis TV (calidad estándar)',
-                    'YouTube (480p)',
-                    'TikTok y Reels',
-                    'Música en streaming (Spotify, Apple Music)',
-                    'Juegos móviles en línea populares (ej: Free Fire, Among Us, Clash Royale)'
-                ],
-                usageExamples: [
-                    'Ver videos en calidad estándar y navegar por redes sociales.',
-                    'Escuchar música en streaming mientras revisas tu correo.',
-                    'Jugar títulos móviles casuales en línea.'
-                ],
-                productivity: ['Google Classroom.', 'Consulta de correo electrónico y edición de documentos en línea.', 'WhatsApp Business para tus comunicaciones profesionales.']
-            },
-            intermedio: {
-                title: '🚀 Plan Intermedio 4 Mb – $18 USD/mes',
-                description: 'Conectividad perfecta para actividades que demandan más velocidad y estabilidad, como streaming en HD y juegos competitivos.',
-                image: 'https://images.unsplash.com/photo-1675358742476-6ad595824519?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                altText: 'Setup de gaming con teclado, ratón y auriculares, representando el uso en hogares y por emprendedores',
-                advantages: ['Baja latencia.', 'Acceso sin VPN.', 'Consumo libre 24/7.', 'Calidad de conexión superior.'],
-                entertainmentApps: [
-                    'Magis TV (HD)',
-                    'Netflix y Disney+ (calidad estándar)',
-                    'YouTube (720p)',
-                    'Twitch (visualización)',
-                    'Videollamadas en HD',
-                    'Juegos competitivos populares (ej: Call of Duty Mobile, PUBG Lite, Brawl Stars, Dota 2 (PC))'
-                ],
-                usageExamples: [
-                    'Participar en clases virtuales o reuniones de teletrabajo en HD.',
-                    'Disfrutar de películas y series en Netflix en calidad estándar.',
-                    'Jugar títulos en línea competitivos con fluidez.'
-                ],
-                productivity: ['Gestión de tu tienda en línea.', 'Uso fluido de Google Workspace (Docs, Sheets, Slides).', 'Participación en reuniones virtuales sin interrupciones.']
-            },
-            premium: {
-                title: '⚡ Plan Premium 6 Mb – $26 USD/mes',
-                description: 'La máxima velocidad y rendimiento para multitarea intensiva, streaming en alta definición y juegos de última generación.',
-                image: 'https://images.unsplash.com/photo-1636487658572-de4646fc9dd6?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                altText: 'Persona grabando un podcast o streaming con micrófono y laptop, representando a gamers y creadores',
-                advantages: ['Ultra baja latencia.', 'Acceso sin VPN.', 'Consumo libre 24/7.', 'Soporte para multitarea intensiva.'],
-                entertainmentApps: [
-                    'Magis TV (Full HD)',
-                    'Netflix y Disney+ (HD/Full HD)',
-                    'YouTube (1080p)',
-                    'Streaming en Twitch/YouTube Live sin cortes ni búfering',
-                    'Videoconferencias de alta calidad',
-                    'Juegos en línea con actualizaciones grandes (ej: Fortnite, Valorant, Minecraft, juegos de PC/consola)'
-                ],
-                usageExamples: [
-                    'Realiza transmisiones en vivo de alta calidad en Twitch o YouTube sin interrupciones.',
-                    'Participa en videoconferencias grupales con múltiples participantes en Full HD.',
-                    'Disfruta de tus películas y series favoritas en Netflix con la máxima resolución disponible.',
-                    'Sube y descarga archivos de gran tamaño a la nube, ideal para creadores de contenido y profesionales.',
-                    'Juega los títulos más exigentes en línea con una latencia mínima y sin lag.',
-                    'Gestiona múltiples dispositivos conectados simultáneamente, manteniendo un rendimiento óptimo en todos ellos.'
-                ],
-                productivity: ['Teletrabajo avanzado y colaboración en tiempo real.', 'Gestión de servidores y entornos virtuales.', 'Edición y transferencia de archivos grandes de forma eficiente.']
-            }
-        };
-        const planTabs = document.querySelectorAll('.tab-button');
-        const planDetailsDisplay = document.getElementById('plan-details-display');
-        function renderPlanDetails(planKey) {
-            const plan = planData[planKey];
-            if (!plan) {
-                planDetailsDisplay.innerHTML = `<div class="bg-white p-8 rounded-2xl shadow-xl">
-                    <p class="general-description-text text-red-500">Lo sentimos, no se pudo cargar la información de este plan.</p></div>`;
-                return;
-            }
-            const advantages = plan.advantages||[];
-            let advantagesHtml = advantages.map(item=>`<li class="flex items-center"><span class="text-[#00A1E4] mr-2">✔</span>${item}</li>`).join('');
-            if(planKey==='intermedio') advantagesHtml=advantages.map(item=>`<li class="flex items-center"><span class="text-[#0077B6] mr-2">✔</span>${item}</li>`).join('');
-            if(planKey==='premium') advantagesHtml=advantages.map(item=>`<li class="flex items-center"><span class="text-[#005082] mr-2">✔</span>${item}</li>`).join('');
-            planDetailsDisplay.innerHTML = `
-                <div class="bg-white p-8 rounded-2xl shadow-xl">
-                    <div class="grid">
-                        <div>
-                            <img src="${plan.image}" alt="${plan.altText}" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Imagen+no+cargada';">
-                            <p class="general-description-text">${plan.description}</p>
-                            <h4>Ventajas clave:</h4>
-                            <ul>${advantagesHtml}</ul>
+    <script type="text/javascript" defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            const planData = {
+                basico: {
+                    title: '🌐 Plan Básico 2 Mb – $9 USD/mes',
+                    description: 'Tu puerta de entrada a la conectividad esencial. Ideal para actividades ligeras y uso personal.',
+                    // URL original de Unsplash para el plan Básico
+                    image: 'https://images.unsplash.com/photo-1613650412348-807a33c111f8?q=80&w=2092&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                    altText: 'Persona viendo series en una tablet, representando uso personal y esencial',
+                    advantages: ['Baja latencia garantizada.', 'Acceso sin VPN.', 'Consumo libre 24/7.', 'Precio ultra competitivo.'],
+                    entertainmentApps: [
+                        'Magis TV (calidad estándar)',
+                        'YouTube (480p)',
+                        'TikTok y Reels',
+                        'Música en streaming (Spotify, Apple Music)',
+                        'Juegos móviles en línea populares (ej: Free Fire, Among Us, Clash Royale)'
+                    ],
+                    usageExamples: [
+                        'Ver videos en calidad estándar y navegar por redes sociales.',
+                        'Escuchar música en streaming mientras revisas tu correo.',
+                        'Jugar títulos móviles casuales en línea.'
+                    ],
+                    productivity: ['Google Classroom.', 'Consulta de correo electrónico y edición de documentos en línea.', 'WhatsApp Business para tus comunicaciones profesionales.']
+                },
+                intermedio: {
+                    title: '🚀 Plan Intermedio 4 Mb – $18 USD/mes',
+                    description: 'Conectividad perfecta para actividades que demandan más velocidad y estabilidad, como streaming en HD y juegos competitivos.',
+                    // URL original de Unsplash para el plan Intermedio
+                    image: 'https://images.unsplash.com/photo-1675358742476-6ad595824519?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                    altText: 'Setup de gaming con teclado, ratón y auriculares, representando el uso en hogares y por emprendedores',
+                    advantages: ['Baja latencia.', 'Acceso sin VPN.', 'Consumo libre 24/7.', 'Calidad de conexión superior.'],
+                    entertainmentApps: [
+                        'Magis TV (HD)',
+                        'Netflix y Disney+ (calidad estándar)',
+                        'YouTube (720p)',
+                        'Twitch (visualización)',
+                        'Videollamadas en HD',
+                        'Juegos competitivos populares (ej: Call of Duty Mobile, PUBG Lite, Brawl Stars, Dota 2 (PC))'
+                    ],
+                    usageExamples: [
+                        'Participar en clases virtuales o reuniones de teletrabajo en HD.',
+                        'Disfrutar de películas y series en Netflix en calidad estándar.',
+                        'Jugar títulos en línea competitivos con fluidez.'
+                    ],
+                    productivity: ['Gestión de tu tienda en línea.', 'Uso fluido de Google Workspace (Docs, Sheets, Slides).', 'Participación en reuniones virtuales sin interrupciones.']
+                },
+                premium: {
+                    title: '⚡ Plan Premium 6 Mb – $26 USD/mes',
+                    description: 'La máxima velocidad y rendimiento para multitarea intensiva, streaming en alta definición y juegos de última generación.',
+                    // URL original de Unsplash para el plan Premium
+                    image: 'https://images.unsplash.com/photo-1636487658572-de4646fc9dd6?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                    altText: 'Persona grabando un podcast o streaming con micrófono y laptop, representando a gamers y creadores',
+                    advantages: ['Ultra baja latencia.', 'Acceso sin VPN.', 'Consumo libre 24/7.', 'Soporte para multitarea intensiva.'],
+                    // Updated usage examples for Premium plan
+                    usageExamples: [
+                        'Realiza transmisiones en vivo de alta calidad en Twitch o YouTube sin interrupciones.',
+                        'Participa en videoconferencias grupales con múltiples participantes en Full HD.',
+                        'Disfruta de tus películas y series favoritas en Netflix con la máxima resolución disponible.',
+                        'Sube y descarga archivos de gran tamaño a la nube, ideal para creadores de contenido y profesionales.',
+                        'Juega los títulos más exigentes en línea con una latencia mínima y sin lag.',
+                        'Gestiona múltiples dispositivos conectados simultáneamente, manteniendo un rendimiento óptimo en todos ellos.'
+                    ],
+                    productivity: ['Teletrabajo avanzado y colaboración en tiempo real.', 'Gestión de servidores y entornos virtuales.', 'Edición y transferencia de archivos grandes de forma eficiente.']
+                }
+            };
+
+            const planTabs = document.querySelectorAll('.tab-button');
+            const planDetailsDisplay = document.getElementById('plan-details-display');
+
+            function renderPlanDetails(planKey) {
+                const plan = planData[planKey];
+
+                // FIX: Added a check to ensure 'plan' is defined before accessing its properties.
+                if (!plan) {
+                    console.error(`Error: Plan data for key "${planKey}" is undefined. Displaying fallback.`);
+                    planDetailsDisplay.innerHTML = `
+                        <div class="bg-white p-8 rounded-2xl shadow-xl">
+                            <p class="general-description-text text-red-500">Lo sentimos, no se pudo cargar la información de este plan. Por favor, intente de nuevo o seleccione otro plan.</p>
                         </div>
-                        <div class="grid">
-                            <div>
-                                <h4>📺 Entretenimiento y Streaming:</h4>
-                                <ul class="list-disc list-inside">
-                                    ${(plan.entertainmentApps||[]).map(item=>`<li>${item}</li>`).join('')}
-                                </ul>
-                            </div>
-                            <div>
-                                <h4>🧑‍🤝‍🧑 Ejemplos de uso:</h4>
-                                <ul class="list-disc list-inside">
-                                    ${(plan.usageExamples||[]).map(item=>`<li>${item}</li>`).join('')}
-                                </ul>
-                            </div>
-                            <div>
-                                <h4>💼 Actividades productivas:</h4>
-                                <ul class="list-disc list-inside">
-                                    ${(plan.productivity||[]).map(item=>`<li>${item}</li>`).join('')}
-                                </ul>
-                            </div>
+                    `;
+                    return; // Exit the function if plan is undefined
+                }
+
+                // Ensure properties are arrays before calling .map()
+                const advantages = plan.advantages || [];
+                const entertainmentApps = plan.entertainmentApps || [];
+                const usageExamples = plan.usageExamples || [];
+                const productivity = plan.productivity || [];
+
+                planDetailsDisplay.innerHTML = `
+                    <div class="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-2xl shadow-xl">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-3xl font-bold mb-4 text-center md:text-left">${plan.title}</h3>
+                            <p class="general-description-text mb-4 text-center md:text-left">${plan.description}</p>
+
+                            <h4 class="font-bold text-2xl text-emerald-primary mb-3">Beneficios Universal:</h4>
+                            <ul class="list-disc list-inside space-y-2 mb-6">
+                                ${advantages.map(adv => `<li class="flex items-center text-lg font-medium"><span class="mr-2 text-emerald-vibrant">✔️</span> ${adv}</li>`).join('')}
+                            </ul>
+
+                            <h4 class="font-bold text-2xl text-emerald-primary mb-3">Ideal para Entretenimiento:</h4>
+                            <ul class="list-disc list-inside space-y-2 mb-6">
+                                ${entertainmentApps.map(app => `<li class="flex items-center text-lg font-medium"><span class="mr-2 text-emerald-primary">🎬</span> ${app}</li>`).join('')}
+                            </ul>
+
+                            <h4 class="font-bold text-2xl text-emerald-primary mb-3">Ejemplos de Uso en Casa:</h4>
+                            <ul class="list-disc list-inside space-y-2 mb-6">
+                                ${usageExamples.map(example => `<li class="flex items-center text-lg font-medium"><span class="mr-2 text-emerald-dark">🏠</span> ${example}</li>`).join('')}
+                            </ul>
+
+                            <h4 class="font-bold text-2xl text-emerald-primary mb-3">Potencia tu Productividad:</h4>
+                            <ul class="list-disc list-inside space-y-2 mb-6">
+                                ${productivity.map(prod => `<li class="flex items-center text-lg font-medium"><span class="mr-2 text-emerald-very-dark">💼</span> ${prod}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="${plan.image}" alt="${plan.altText}" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Imagen+no+cargada';" class="w-full h-auto rounded-lg shadow-md mb-4">
                         </div>
                     </div>
-                </div>
-            `;
-            planTabs.forEach(tab=>{
-                tab.classList.remove('active');
-                if(tab.dataset.plan===planKey)tab.classList.add('active');
-            });
-        }
-        planTabs.forEach(tab=>{tab.addEventListener('click',()=>{renderPlanDetails(tab.dataset.plan);});});
-        renderPlanDetails('basico');
-        // Recomendar plan (IA simulada)
-        async function getAIRecommendation(selectedActivities){
-            return new Promise(resolve=>{
-                setTimeout(()=>{
-                    let recommendedPlan='basico',explanation="",personalizedMessage="";
-                    if(selectedActivities.includes('downloads')||(selectedActivities.includes('gaming')&&selectedActivities.includes('work'))){
-                        recommendedPlan='premium';
-                        explanation="🚀 <strong>Análisis IA</strong>: Detecté alta velocidad para <u>descargas grandes</u> o <u>juegos + teletrabajo</u>. El <strong>Plan Premium (6 Mb)</strong> evita el lag en videollamadas mientras juegas o descargas.";
-                        personalizedMessage="💡 <strong>Tip profesional</strong>: Con 6 Mb, puedes subir un video de 1GB a YouTube en ~30 minutos mientras participas en una reunión por Zoom.";
-                    }else if(selectedActivities.includes('streaming')&&selectedActivities.includes('gaming')){
-                        recommendedPlan='intermedio';
-                        explanation="🎮 <strong>Análisis IA</strong>: Streaming + gaming. El <strong>Plan Intermedio (4 Mb)</strong> optimiza ancho de banda para transmitir en Twitch/YouTube a 720p sin afectar tu latencia en juegos.";
-                        personalizedMessage="🍿 <strong>Dato útil</strong>: Con 4 Mb, 2 dispositivos pueden ver Netflix en HD al mismo tiempo sin buffering.";
-                    }else if(selectedActivities.includes('work')||selectedActivities.includes('streaming')){
-                        recommendedPlan='intermedio';
-                        explanation="💼 <strong>Análisis IA</strong>: Teletrabajo/streaming requieren estabilidad. El <strong>Plan Intermedio</strong> mantiene videollamadas en HD y streaming fluido, incluso con varios dispositivos conectados.";
-                        personalizedMessage="📅 <strong>Perfecto para</strong>: Freelancers que usan Google Meet + Spotify + correo electrónico simultáneamente.";
-                    }else{
-                        recommendedPlan='basico';
-                        explanation="📱 <strong>Análisis IA</strong>: Para <u>redes sociales y navegación</u>, el <strong>Plan Básico (2 Mb)</strong> es la opción más eficiente.";
-                        personalizedMessage="💰 <strong>Ahorro inteligente</strong>: Por solo $9/mes, tienes conexión para WhatsApp, Instagram y TikTok ilimitados.";
-                    }
-                    resolve({recommendedPlan,explanation,personalizedMessage});
-                },1200);
-            });
-        }
-        const getRecommendationBtn = document.getElementById('get-recommendation-btn');
-        const activityCheckboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
-        const recommendationResultDiv = document.getElementById('recommendation-result');
-        const plansSection = document.getElementById('plans-section');
-        getRecommendationBtn.addEventListener('click',async()=>{
-            const selectedActivities = Array.from(activityCheckboxes).filter(cb=>cb.checked).map(cb=>cb.value);
-            if(selectedActivities.length===0){
-                recommendationResultDiv.innerHTML="<p>Por favor, selecciona al menos una actividad.</p>"; return;
+                `;
             }
-            recommendationResultDiv.innerHTML="<p>Analizando tus actividades...</p>";
-            const {recommendedPlan,explanation,personalizedMessage} = await getAIRecommendation(selectedActivities);
-            const recommendedPlanName = planData[recommendedPlan].title.split(' ')[2];
-            recommendationResultDiv.innerHTML=`
-                <p><strong>Plan Recomendado: ${recommendedPlanName}</strong></p>
-                <p>${explanation}</p>
-                <p>${personalizedMessage}</p>
-                <button class="view-plan-details-btn" data-plan="${recommendedPlan}">Ver detalles del Plan ${recommendedPlanName}</button>
-            `;
-            const viewPlanDetailsBtn = recommendationResultDiv.querySelector('.view-plan-details-btn');
-            if(viewPlanDetailsBtn){
-                viewPlanDetailsBtn.addEventListener('click',()=>{
-                    const targetPlan=viewPlanDetailsBtn.dataset.plan;
-                    const targetTab=document.querySelector(`.tab-button[data-plan="${targetPlan}"]`);
-                    if(targetTab){targetTab.click();plansSection.scrollIntoView({behavior:'smooth',block:'center'});}
+
+            planTabs.forEach(button => {
+                button.addEventListener('click', () => {
+                    planTabs.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    renderPlanDetails(button.dataset.plan);
+                });
+            });
+
+            // Initial render
+            const initialPlan = document.querySelector('.tab-button.active') || document.querySelector('.tab-button[data-plan="intermedio"]');
+            if (initialPlan) {
+                initialPlan.classList.add('active'); // Ensure 'active' class is set for initial display
+                renderPlanDetails(initialPlan.dataset.plan);
+            } else {
+                renderPlanDetails('intermedio'); // Fallback to 'intermedio' if no active or specific tab found
+            }
+
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+
+            // Personalized Plan Recommendation Logic (Simulated AI)
+            // Reemplaza la función getRuleBasedRecommendation() con getAIRecommendation()
+            async function getAIRecommendation(selectedActivities) {
+                // Simula una consulta a IA con un delay (en producción, sería una API real)
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        let recommendedPlan = 'basico';
+                        let explanation = "";
+                        let personalizedMessage = "";
+
+                        // Lógica de IA mejorada para telecomunicaciones
+                        if (selectedActivities.includes('downloads') ||
+                            (selectedActivities.includes('gaming') && selectedActivities.includes('work'))) {
+                            recommendedPlan = 'premium';
+                            explanation = "🚀 <strong>Análisis IA</strong>: Detecté que necesitas alta velocidad para <u>descargas grandes</u> o <u>juegos + teletrabajo</u>. El <strong>Plan Premium (6 Mb)</strong> evita el lag en videollamadas mientras juegas o descargas archivos pesados.";
+                            personalizedMessage = "💡 <strong>Tip profesional</strong>: Con 6 Mb, puedes subir un video de 1GB a YouTube en ~30 minutos mientras participas en una reunión por Zoom.";
+                        }
+                        else if (selectedActivities.includes('streaming') && selectedActivities.includes('gaming')) {
+                            recommendedPlan = 'intermedio';
+                            explanation = "🎮 <strong>Análisis IA</strong>: Veo que haces <u>streaming + gaming</u>. El <strong>Plan Intermedio (4 Mb)</strong> optimiza el ancho de banda para que puedas transmitir en Twitch/YouTube a 720p sin afectar tu latencia en juegos.";
+                            personalizedMessage = "🍿 <strong>Dato útil</strong>: Con 4 Mb, 2 dispositivos pueden ver Netflix en HD al mismo tiempo sin buffering.";
+                        }
+                        else if (selectedActivities.includes('work') || selectedActivities.includes('streaming')) {
+                            recommendedPlan = 'intermedio';
+                            explanation = "💼 <strong>Análisis IA</strong>: Tus actividades de <u>teletrabajo/streaming</u> requieren estabilidad. El <strong>Plan Intermedio</strong> mantiene videollamadas en HD y streaming fluido, incluso con varios dispositivos conectados.";
+                            personalizedMessage = "📅 <strong>Perfecto para</strong>: Freelancers que usan Google Meet + Spotify + correo electrónico simultáneamente.";
+                        }
+                        else {
+                            recommendedPlan = 'basico';
+                            explanation = "📱 <strong>Análisis IA</strong>: Para <u>redes sociales y navegación</u>, el <strong>Plan Básico (2 Mb)</strong> es la opción más eficiente. Ahorras dinero sin sacrificar rendimiento en tus actividades principales.";
+                            personalizedMessage = "💰 <strong>Ahorro inteligente</strong>: Por solo $9/mes, tienes conexión para WhatsApp, Instagram y TikTok ilimitados.";
+                        }
+
+                        resolve({ recommendedPlan, explanation, personalizedMessage });
+                    }, 1200); // Simula tiempo de respuesta de IA
                 });
             }
-            const personalizedPlanSection=document.getElementById('personalized-plan-section');
-            const collapsibleContent=personalizedPlanSection.querySelector('.collapsible-content');
-            if(collapsibleContent.classList.contains('open')){
-                setTimeout(()=>{collapsibleContent.style.maxHeight=collapsibleContent.scrollHeight+"px";},0);
-            }
-        });
-        // IA Free Icon logic, AI carousel, Collapsibles, FAQ
-        const iaFreeIconBtn = document.getElementById('ia-free-icon-btn');
-        const aiUniverseSection = document.getElementById('ai-universe-section');
-        const aiUniverseHeader = aiUniverseSection.querySelector('.collapsible-header');
-        const aiUniverseContent = aiUniverseSection.querySelector('.collapsible-content');
-        iaFreeIconBtn.addEventListener('click',()=>{
-            aiUniverseHeader.classList.toggle('active');
-            aiUniverseContent.classList.toggle('open');
-            if(aiUniverseContent.classList.contains('open')){
-                aiUniverseContent.style.maxHeight=aiUniverseContent.scrollHeight+"px";
-                aiUniverseSection.scrollIntoView({behavior:'smooth',block:'start'});
-            }else{
-                aiUniverseContent.style.maxHeight=null;
-            }
-        });
-        const collapsibleHeaders = document.querySelectorAll('.collapsible-section .collapsible-header');
-        function resetAllSections(){
-            collapsibleHeaders.forEach(header=>{
-                const parentSection=header.closest('.collapsible-section');
-                const content=header.nextElementSibling;
-                header.classList.remove('active');
-                content.classList.remove('open');
-                content.style.maxHeight=null;
-                if(parentSection.id==='personalized-plan-section'){parentSection.classList.add('collapsed-glowing');}
-                if(parentSection.classList.contains('heartbeat-animation')){parentSection.classList.remove('heartbeat-animation');}
-            });
-            const faqQuestions = document.querySelectorAll('#faq-section .faq-question');
-            faqQuestions.forEach(question=>{
-                const answer=question.nextElementSibling;
-                question.classList.remove('active');
-                answer.classList.remove('open');
-                answer.style.maxHeight=null;
-            });
-            activityCheckboxes.forEach(cb=>cb.checked=false);
-            recommendationResultDiv.innerHTML="Tu recomendación aparecerá aquí.";
-        }
-        collapsibleHeaders.forEach(header=>{
-            const parentSection=header.closest('.collapsible-section');
-            const content=header.nextElementSibling;
-            if(parentSection.id!=='plans-section'){
-                header.classList.remove('active');
-                content.classList.remove('open');
-                content.style.maxHeight=null;
-            }
-            if(parentSection.id==='personalized-plan-section'){
-                parentSection.classList.add('collapsed-glowing');
-            }
-            header.addEventListener('click',()=>{
-                header.classList.toggle('active');
-                content.classList.toggle('open');
-                if(content.classList.contains('open')){
-                    content.style.maxHeight=content.scrollHeight+"px";
-                    if(parentSection.id==='personalized-plan-section'){parentSection.classList.remove('collapsed-glowing');}
-                }else{
-                    content.style.maxHeight=null;
-                    if(parentSection.id==='personalized-plan-section'){parentSection.classList.add('collapsed-glowing');}
+
+            const getRecommendationBtn = document.getElementById('get-recommendation-btn');
+            const activityCheckboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+            const recommendationResultDiv = document.getElementById('recommendation-result');
+            const plansSection = document.getElementById('plans-section'); // Referencia a la sección de planes
+
+            getRecommendationBtn.addEventListener('click', async () => { // Made async to await AI recommendation
+                const selectedActivities = Array.from(activityCheckboxes)
+                                                .filter(checkbox => checkbox.checked)
+                                                .map(checkbox => checkbox.value);
+
+                if (selectedActivities.length === 0) {
+                    recommendationResultDiv.innerHTML = "<p>Por favor, selecciona al menos una actividad para obtener una recomendación.</p>";
+                    return;
                 }
-            });
-        });
-        const faqQuestions = document.querySelectorAll('#faq-section .faq-question');
-        faqQuestions.forEach(question=>{
-            const answer=question.nextElementSibling;
-            question.classList.remove('active');
-            answer.classList.remove('open');
-            answer.style.maxHeight=null;
-            question.addEventListener('click',()=>{
-                question.classList.toggle('active');
-                if(answer.classList.contains('open')){
-                    answer.classList.remove('open');answer.style.maxHeight=null;
-                }else{
-                    document.querySelectorAll('#faq-section .faq-answer.open').forEach(openAnswer=>{
-                        openAnswer.classList.remove('open');openAnswer.style.maxHeight=null;openAnswer.previousElementSibling.classList.remove('active');
+
+                recommendationResultDiv.innerHTML = "<p>Analizando tus actividades... <span class='loading-spinner'></span></p>"; // Loading indicator
+
+                const { recommendedPlan, explanation, personalizedMessage } = await getAIRecommendation(selectedActivities); // Await AI recommendation
+                const recommendedPlanName = planData[recommendedPlan].title.split(' ')[2]; // Extract "Básico", "Intermedio", "Premium"
+
+                recommendationResultDiv.innerHTML = `
+                    <p><strong>Plan Recomendado: ${recommendedPlanName}</strong></p>
+                    <p>${explanation}</p>
+                    <p>${personalizedMessage}</p>
+                    <button class="view-plan-details-btn" data-plan="${recommendedPlan}">Ver detalles del Plan ${recommendedPlanName}</button>
+                `;
+
+                // Add event listener to the new button if it exists
+                const viewPlanDetailsBtn = recommendationResultDiv.querySelector('.view-plan-details-btn');
+                if (viewPlanDetailsBtn) {
+                    viewPlanDetailsBtn.addEventListener('click', () => {
+                        const targetPlan = viewPlanDetailsBtn.dataset.plan;
+                        const targetTab = document.querySelector(`.tab-button[data-plan="${targetPlan}"]`);
+
+                        if (targetTab) {
+                            targetTab.click();
+                            plansSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
                     });
-                    answer.classList.add('open');answer.style.maxHeight=answer.scrollHeight+"px";
+                }
+
+                // Recalcular la altura de la sección desplegable si está abierta
+                const personalizedPlanSection = document.getElementById('personalized-plan-section');
+                const collapsibleContent = personalizedPlanSection.querySelector('.collapsible-content');
+
+                if (collapsibleContent.classList.contains('open')) {
+                    requestAnimationFrame(() => { // Usar requestAnimationFrame para cálculos de altura más precisos
+                        collapsibleContent.style.maxHeight = collapsibleContent.scrollHeight + "px";
+                    });
                 }
             });
+
+            // Lógica para el icono IA Free
+            const iaFreeIconBtn = document.getElementById('ia-free-icon-btn');
+            const aiUniverseSection = document.getElementById('ai-universe-section');
+            const aiUniverseHeader = aiUniverseSection.querySelector('.collapsible-header');
+            const aiUniverseContent = aiUniverseSection.querySelector('.collapsible-content');
+
+            iaFreeIconBtn.addEventListener('click', () => {
+                // Toggle the 'active' class on the header
+                aiUniverseHeader.classList.toggle('active');
+                // Toggle the 'open' class on the content
+                aiUniverseContent.classList.toggle('open');
+
+                if (aiUniverseContent.classList.contains('open')) {
+                    // Si se abre, ajusta la altura y desplázate a la vista
+                    requestAnimationFrame(() => { // Usar requestAnimationFrame
+                        aiUniverseContent.style.maxHeight = aiUniverseContent.scrollHeight + "px";
+                    });
+                    aiUniverseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    // Si se cierra, restablece la altura
+                    aiUniverseContent.style.maxHeight = null;
+                }
+            });
+
+            // Lógica para las secciones desplegables (collapsible sections)
+            const collapsibleHeaders = document.querySelectorAll('.collapsible-section .collapsible-header');
+
+            function resetAllSections() {
+                collapsibleHeaders.forEach(header => {
+                    const parentSection = header.closest('.collapsible-section');
+                    const content = header.nextElementSibling;
+                    header.classList.remove('active');
+                    content.classList.remove('open');
+                    content.style.maxHeight = null; // Esto es crucial para asegurar que se contraen
+                    if (parentSection.id === 'personalized-plan-section') {
+                        parentSection.classList.add('collapsed-glowing'); // Re-add glowing
+                    }
+                    if (parentSection.classList.contains('heartbeat-animation')) {
+                        parentSection.classList.remove('heartbeat-animation'); // Remove heartbeat
+                    }
+                });
+
+                const faqQuestions = document.querySelectorAll('#faq-section .faq-question');
+                faqQuestions.forEach(question => {
+                    const answer = question.nextElementSibling;
+                    question.classList.remove('active');
+                    answer.classList.remove('open');
+                    answer.style.maxHeight = null; // También crucial para las respuestas de FAQ
+                });
+
+                // Reset recommendation section inputs and result
+                activityCheckboxes.forEach(checkbox => checkbox.checked = false);
+                recommendationResultDiv.innerHTML = "Tu recomendación aparecerá aquí.";
+            }
+
+
+            collapsibleHeaders.forEach(header => {
+                const parentSection = header.closest('.collapsible-section');
+                const content = header.nextElementSibling;
+
+                // Todas las secciones deben iniciar contraídas por defecto, excepto la de planes que no es colapsable
+                // y la de recomendación que ya tiene su propia lógica de inicio contraída y animada.
+                // La sección de IA también tiene su propia lógica de inicio contraída.
+                if (parentSection.id !== 'plans-section') { // Asegúrate de que no es la sección de planes
+                    header.classList.remove('active'); // Asegura que la flecha esté hacia abajo
+                    content.classList.remove('open'); // Asegura que el contenido esté oculto
+                    content.style.maxHeight = null; // Asegura que la altura inicial sea 0
+                }
+
+                // Si la sección es la de recomendación, la mantenemos colapsada por defecto y con animación
+                if (parentSection.id === 'personalized-plan-section') {
+                    parentSection.classList.add('collapsed-glowing'); // Añade la clase de animación al inicio
+                }
+
+                header.addEventListener('click', () => {
+                    header.classList.toggle('active');
+                    content.classList.toggle('open');
+
+                    if (content.classList.contains('open')) {
+                        requestAnimationFrame(() => { // Usar requestAnimationFrame
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        });
+                        if (parentSection.id === 'personalized-plan-section') {
+                            parentSection.classList.remove('collapsed-glowing'); // Quita la animación al abrir
+                        }
+                    } else {
+                        content.style.maxHeight = null; // Cierra el contenido
+                        if (parentSection.id === 'personalized-plan-section') {
+                            parentSection.classList.add('collapsed-glowing'); // Añade la animación al cerrar
+                        }
+                    }
+                });
+            });
+
+            // Lógica específica para las preguntas frecuentes (FAQ) con corrección
+            const faqQuestions = document.querySelectorAll('#faq-section .faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isCurrentlyOpen = answer.classList.contains('open');
+
+                    // Primero, cierra todas las respuestas de FAQ que estén abiertas.
+                    document.querySelectorAll('#faq-section .faq-answer.open').forEach(openAnswer => {
+                        openAnswer.style.maxHeight = null;
+                        openAnswer.classList.remove('open');
+                        openAnswer.previousElementSibling.classList.remove('active');
+                    });
+
+                    // Si la pregunta en la que se hizo clic no estaba abierta, ábrela.
+                    if (!isCurrentlyOpen) {
+                        question.classList.add('active');
+                        answer.classList.add('open');
+                        
+                        const parentItem = question.closest('.faq-item');
+                        // Para el elemento especial que se abre hacia arriba, la animación es solo con CSS.
+                        // Para los demás, animamos max-height.
+                        if (!parentItem || parentItem.id !== 'faq-item-pilot') {
+                            requestAnimationFrame(() => {
+                                answer.style.maxHeight = answer.scrollHeight + "px";
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Lógica del carrusel de imágenes de IA
+            const aiCarouselImage = document.getElementById('ai-carousel-image');
+            const aiImages = [
+                'https://images.unsplash.com/photo-1712002641502-5bc8a04f6286?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1694903089438-bf28d4697d9a?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1710993011836-108ba89ebe51?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1678995632928-298d05d41671?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            ];
+            let currentImageIndex = 0;
+            let carouselInterval; // Variable para almacenar el ID del intervalo
+
+            function changeImage() {
+                aiCarouselImage.style.opacity = 0; // Inicia la transición de desvanecimiento
+
+                setTimeout(() => {
+                    currentImageIndex = (currentImageIndex + 1) % aiImages.length;
+                    aiCarouselImage.src = aiImages[currentImageIndex];
+                    aiCarouselImage.alt = `Imagen de IA ${currentImageIndex + 1}`;
+                    aiCarouselImage.style.opacity = 1; // Hace que la nueva imagen aparezca
+                }, 1000); // Espera 1 segundo para que la opacidad llegue a 0 antes de cambiar la imagen
+            }
+
+            // Función para iniciar el carrusel
+            function startCarousel() {
+                // Establece la primera imagen al cargar
+                aiCarouselImage.src = aiImages[currentImageIndex];
+                aiCarouselImage.alt = `Imagen de IA ${currentImageIndex + 1}`;
+                carouselInterval = setInterval(changeImage, 5000); // Cambia la imagen cada 5 segundos (1s fade out + 4s visible)
+            }
+
+            // Inicia el carrusel al cargar la página
+            startCarousel();
+
+            // Lógica para el clic en el título principal
+            const mainTitle = document.getElementById('main-title');
+            const whoWeAreSection = document.getElementById('who-we-are-section');
+            const whoWeAreHeader = whoWeAreSection.querySelector('.collapsible-header');
+            const whoWeAreContent = whoWeAreSection.querySelector('.collapsible-content');
+
+            mainTitle.addEventListener('click', () => {
+                // 1. Resetear todas las interacciones (esto cierra todas las secciones)
+                resetAllSections();
+                renderPlanDetails('basico'); // Restablecer a la pestaña básica
+
+                // No hay setTimeout aquí, para que sea inmediato como el botón IA Free
+                // Asegurarse de que "Quiénes Somos" esté cerrado antes de intentar abrirlo (redundante pero seguro)
+                whoWeAreHeader.classList.remove('active');
+                whoWeAreContent.classList.remove('open');
+                whoWeAreContent.style.maxHeight = null;
+
+                // 2. Desplegar la pestaña "Quiénes Somos"
+                whoWeAreHeader.classList.add('active');
+                whoWeAreContent.classList.add('open');
+                // Recalcular maxHeight para asegurar que se abra correctamente
+                requestAnimationFrame(() => { // Usar requestAnimationFrame
+                    whoWeAreContent.style.maxHeight = whoWeAreContent.scrollHeight + "px";
+                });
+
+                // 3. Desplazarse a la sección "Quiénes Somos" al inicio de la página
+                whoWeAreSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Añadir animación de latido
+                whoWeAreSection.classList.add('heartbeat-animation');
+                setTimeout(() => {
+                    whoWeAreSection.classList.remove('heartbeat-animation');
+                }, 1000); // Remover la clase de animación después de 1 segundo
+            });
         });
-        // Carrusel IA
-        const aiCarouselImage=document.getElementById('ai-carousel-image');
-        const aiImages=[
-            'https://images.unsplash.com/photo-1712002641502-5bc8a04f6286?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            'https://images.unsplash.com/photo-1694903089438-bf28d4697d9a?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            'https://images.unsplash.com/photo-1710993011836-108ba89ebe51?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            'https://images.unsplash.com/photo-1678995632928-298d05d41671?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-        ];
-        let currentImageIndex=0,carouselInterval;
-        function changeImage(){
-            aiCarouselImage.style.opacity=0;
-            setTimeout(()=>{
-                currentImageIndex=(currentImageIndex+1)%aiImages.length;
-                aiCarouselImage.src=aiImages[currentImageIndex];
-                aiCarouselImage.alt=`Imagen de IA ${currentImageIndex+1}`;
-                aiCarouselImage.style.opacity=1;
-            },1000);
-        }
-        function startCarousel(){
-            aiCarouselImage.src=aiImages[currentImageIndex];
-            aiCarouselImage.alt=`Imagen de IA ${currentImageIndex+1}`;
-            carouselInterval=setInterval(changeImage,5000);
-        }
-        startCarousel();
-        // Título principal click: Quiénes Somos
-        const mainTitle=document.getElementById('main-title');
-        const whoWeAreSection=document.getElementById('who-we-are-section');
-        const whoWeAreHeader=whoWeAreSection.querySelector('.collapsible-header');
-        const whoWeAreContent=whoWeAreSection.querySelector('.collapsible-content');
-        mainTitle.addEventListener('click',()=>{
-            resetAllSections();renderPlanDetails('basico');
-            whoWeAreHeader.classList.remove('active');whoWeAreContent.classList.remove('open');whoWeAreContent.style.maxHeight=null;
-            whoWeAreHeader.classList.add('active');whoWeAreContent.classList.add('open');
-            whoWeAreContent.style.maxHeight=whoWeAreContent.scrollHeight+"px";
-            whoWeAreSection.scrollIntoView({behavior:'smooth',block:'start'});
-            whoWeAreSection.classList.add('heartbeat-animation');
-            setTimeout(()=>{whoWeAreSection.classList.remove('heartbeat-animation');},1000);
-        });
-    });
     </script>
 </head>
 <body class="bg-slate-100 text-slate-800">
+
     <div class="container">
+
         <header class="text-center my-8 md:my-12">
             <h1 class="futuristic-title" id="main-title">ExtraNet</h1>
             <span class="ia-free-icon" id="ia-free-icon-btn">IA Free</span>
             <p>Tu Conexión al Futuro, Hoy.</p>
-            <p class="general-description-text">Experimenta una conexión a internet sin igual. Planes diseñados para tu vida, con velocidad, libertad y una calidad superior que te sorprenderá.</p>
+            <p class="general-description-text">Experimenta una conexión a internet sin igual. Planes diseñados para tu vida, con velocidad, autonomía y una calidad superior que te sorprenderá.</p>
             <a href="https://wa.me/16402690073" target="_blank" class="cta-button">
                 ¡Conéctate Ahora!
             </a>
         </header>
+
+        <!-- Sección de Beneficios - NO desplegable -->
         <section id="universal-benefits">
             <h2>Beneficios que Transforman tu Experiencia</h2>
             <div class="grid">
@@ -474,7 +1304,7 @@
                 </div>
                 <div>
                     <span>♾️</span>
-                    <h3>Libertad 24/7</h3>
+                    <h3>Autonomía 24/7</h3>
                     <p>Navega, descarga y reproduce contenido sin límites de horario.</p>
                 </div>
                 <div>
@@ -484,6 +1314,8 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sección de Planes - NO desplegable -->
         <main id="plans-section">
             <h2>Explora Nuestros Planes Exclusivos</h2>
             <div id="plan-tabs">
@@ -494,7 +1326,9 @@
                 </button>
                 <button class="tab-button tab-popular" data-plan="intermedio">
                     <span class="tab-badge">MÁS POPULAR</span>
-                    <p class="font-bold text-3xl flex items-center justify-center">🔥 Intermedio</p>
+                    <p class="font-bold text-3xl flex items-center justify-center">
+                        🔥 Intermedio
+                    </p>
                     <p class="text-xl">4 Mb | $18 USD</p>
                     <p class="text-lg text-slate-500">Hogares y emprendedores</p>
                 </button>
@@ -504,12 +1338,16 @@
                     <p class="text-lg text-slate-500">Gamers y creadores</p>
                 </button>
             </div>
-            <div id="plan-details-display"></div>
+            <div id="plan-details-display">
+            </div>
         </main>
+
+        <!-- Sección de Recomendación de Plan - DESPLEGABLE con animación -->
         <section id="personalized-plan-section" class="collapsible-section collapsed-glowing">
             <h2 class="collapsible-header">✨ Obtén tu Recomendación de Plan Personalizada ✨</h2>
             <div class="collapsible-content">
                 <p class="general-description-text mb-6">Responde unas preguntas rápidas sobre tus actividades en línea y te sugeriremos el plan ideal para ti.</p>
+
                 <div class="input-group mb-6">
                     <label>¿Cuáles son las actividades principales en línea?</label>
                     <div class="checkbox-group">
@@ -535,101 +1373,144 @@
                         </div>
                     </div>
                 </div>
+
                 <button id="get-recommendation-btn">Obtener Recomendación ✨</button>
-                <div id="recommendation-result">Tu recomendación aparecerá aquí.</div>
+
+                <div id="recommendation-result">
+                    Tu recomendación aparecerá aquí.
+                </div>
             </div>
         </section>
+
+        <!-- Sección de IA - DESPLEGABLE -->
         <section id="ai-universe-section" class="collapsible-section">
             <h2 class="collapsible-header">Sumérgete en el Universo de la IA sin Costo Alguno</h2>
             <div class="collapsible-content">
+                <!-- Carrusel de imágenes de IA -->
                 <div id="ai-carousel-container">
                     <img id="ai-carousel-image" src="" alt="Imagen relacionada con la IA">
                 </div>
+
                 <p class="general-description-text mb-4">
-                    En ExtraNet, estamos emocionados de presentarte una novedad exclusiva: el acceso al fascinante universo de la Inteligencia Artificial, <b>sin costo adicional</b> para nuestros usuarios piloto. Esta es una extensión de nuestra red experimental, diseñada para ofrecerte herramientas de vanguardia y potenciar tu experiencia digital.
+                    En ExtraNet, estamos emocionados de presentarte una novedad exclusiva: el acceso al fascinante universo de la Inteligencia Artificial, **sin costo adicional** para nuestros usuarios piloto. Esta es una extensión de nuestra red experimental, diseñada para ofrecerte herramientas de vanguardia y potenciar tu experiencia digital.
                 </p>
                 <p class="general-description-text mb-4">
                     Con esta integración, podrás explorar las capacidades más relevantes de la IA, transformando la forma en que interactúas con la información y creas contenido:
                 </p>
                 <ul class="list-disc list-inside general-description-text space-y-2 mb-4">
-                    <li><strong>Generación de Contenido Inteligente:</strong> Crea textos, ideas, guiones, correos electrónicos y más, de forma rápida y eficiente.</li>
-                    <li><strong>Asistencia Personalizada:</strong> Obtén respuestas instantáneas a tus preguntas, resúmenes de información compleja o ayuda para organizar tus tareas.</li>
-                    <li><strong>Creación y Edición de Imágenes:</strong> Transforma tus ideas en imágenes visuales, edita fotografías o genera gráficos únicos.</li>
-                    <li><strong>Aprendizaje y Resolución de Problemas:</strong> Utiliza la IA como herramienta de estudio interactiva, resuelve problemas o explora nuevos conceptos.</li>
-                    <li><strong>Automatización de Tareas:</strong> Simplifica tus rutinas diarias delegando tareas repetitivas a la IA.</li>
+                    <li>
+                        <strong>Generación de Contenido Inteligente:</strong> Crea textos, ideas, guiones, correos electrónicos y más, de forma rápida y eficiente. La IA puede ayudarte a superar el bloqueo creativo y a producir contenido original en segundos.
+                    </li>
+                    <li>
+                        <strong>Asistencia Personalizada:</strong> Obtén respuestas instantáneas a tus preguntas, resúmenes de información compleja o ayuda para organizar tus tareas. Es como tener un asistente experto siempre disponible.
+                    </li>
+                    <li>
+                        <strong>Creación y Edición de Imágenes:</strong> Transforma tus ideas en imágenes visuales, edita fotografías con precisión o genera gráficos únicos para tus proyectos personales o profesionales.
+                    </li>
+                    <li>
+                        <strong>Aprendizaje y Resolución de Problemas:</strong> Utiliza la IA como una herramienta de estudio interactiva, resuelve problemas complejos o explora nuevos conceptos con explicaciones claras y concisas.
+                    </li>
+                    <li>
+                        <strong>Automatización de Tareas:</strong> Simplifica tus rutinas diarias delegando tareas repetitivas a la IA, liberando tu tiempo para lo que realmente importa.
+                    </li>
                 </ul>
                 <p class="general-description-text">
                     Esta funcionalidad de IA es una muestra más de nuestro compromiso con la innovación y la excelencia. Como parte de nuestra comunidad selecta, tienes la oportunidad de experimentar el futuro de la conectividad y la tecnología, hoy.
                 </p>
             </div>
         </section>
+
+        <!-- Sección Quiénes Somos - DESPLEGABLE -->
         <section id="who-we-are-section" class="collapsible-section">
             <h2 class="collapsible-header">Quiénes Somos</h2>
             <div class="collapsible-content">
                 <p class="general-description-text mb-4">
-                    ExtraNet es una iniciativa pionera, una <b>pequeña red privada y local</b> que opera de forma experimental. No somos un proveedor de internet masivo, sino un proyecto dedicado a explorar los límites de la conectividad de excelencia.
+                    ExtraNet es una iniciativa pionera, una **pequeña red privada y local** que opera de forma experimental. No somos un proveedor de internet masivo, sino un proyecto dedicado a explorar los límites de la conectividad de excelencia.
                 </p>
                 <p class="general-description-text mb-4">
-                    Por la naturaleza de nuestro desarrollo, el acceso a ExtraNet es <b>exclusivo y limitado</b>. Solo personas cuidadosamente seleccionadas, como tú, tienen el privilegio de conocer y formar parte de este servicio innovador.
+                    Por la naturaleza de nuestro desarrollo, el acceso a ExtraNet es **exclusivo y limitado**. Solo personas cuidadosamente seleccionadas, como tú, tienen el privilegio de conocer y formar parte de este servicio innovador. Valoramos la calidad sobre la cantidad y buscamos usuarios que aprecien una conexión superior.
                 </p>
                 <p class="general-description-text">
-                    Actualmente, nuestros servicios de conectividad están orientados a <b>pruebas piloto</b>. Elegimos a nuestros usuarios con el fin de colaborar en la mejora continua de nuestra red, ofreciéndoles a cambio la oportunidad de disfrutar de las inigualables bondades de una conexión de excelencia.
+                    Actualmente, nuestros servicios de conectividad están orientados a **pruebas piloto**. Elegimos a nuestros usuarios con el fin de colaborar en la mejora continua de nuestra red, ofreciéndoles a cambio la oportunidad de disfrutar de las inigualables bondades de una conexión de excelencia. Tu participación es clave para el futuro de ExtraNet.
                 </p>
             </div>
         </section>
+
+        <!-- Sección Preguntas Frecuentes - DESPLEGABLE -->
         <section id="faq-section" class="collapsible-section">
             <h2 class="collapsible-header">Preguntas Frecuentes</h2>
             <div class="collapsible-content">
                 <div class="faq-item">
                     <div class="faq-question">¿De dónde proviene el nombre ExtraNet?</div>
-                    <div class="faq-answer"><p class="general-description-text">ExtraNet es simplemente un nombre distintivo que le dimos a nuestro servicio de red local.</p></div>
+                    <div class="faq-answer">
+                        <p class="general-description-text">ExtraNet es un nombre distintivo para nuestra red local, diferenciándola y reflejando su valor único.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Con esta red tendré la posibilidad de usar servicios internacionales?</div>
-                    <div class="faq-answer"><p class="general-description-text">Sí, ¡definitivamente! Esta red cuenta con una conexión VPN integrada que virtualiza tu ubicación al exterior.</p></div>
+                    <div class="faq-answer">
+                        <p class="general-description-text">¡Sí! La red incluye una VPN para virtualizar tu ubicación, ofreciendo baja latencia y acceso a servicios internacionales sin restricciones.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Se me desconecta a veces el servicio cuando juego?</div>
-                    <div class="faq-answer"><p class="general-description-text">A pesar de la alta calidad de nuestra conexión, ocasionalmente pueden presentarse pequeñas caídas. Recomendamos usar VPNs para no sufrir interrupciones.</p></div>
+                    <div class="faq-answer">
+                        <p class="general-description-text">Aunque la conexión es de alta calidad, pueden ocurrir caídas ocasionales. Recomendamos usar una VPN para evitar interrupciones; te ayudaremos a elegir una.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Puedo incrementar la barrera de los 6 MB?</div>
-                    <div class="faq-answer"><p class="general-description-text">Sí, podrás adquirir más de 6 MB si hay disponibilidad. Recibirás descuento por MB adicional.</p></div>
+                    <div class="faq-answer">
+                        <p class="general-description-text">Sí, puedes contratar más de 6 MB si hay disponibilidad, con un 15% de descuento en cada MB adicional.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Qué métodos de pago y qué moneda aceptan?</div>
-                    <div class="faq-answer"><p class="general-description-text">Aceptamos diversos tipos de pagos y monedas, tomando como referencia el dólar estadounidense (USD).</p></div>
+                    <div class="faq-answer">
+                        <p class="general-description-text">Aceptamos diversos métodos de pago y monedas, usando el dólar (USD) como referencia al cambio actual para tu comodidad.</p>
+                    </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item" id="faq-item-pilot">
                     <div class="faq-question">¿Cómo puedo solicitar una prueba piloto de ExtraNet?</div>
-                    <div class="faq-answer"><p class="general-description-text">Contáctanos por WhatsApp para solicitar tu prueba piloto. Evaluaremos tu solicitud y te guiaremos en los próximos pasos.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">¿ExtraNet ofrece soporte técnico?</div>
-                    <div class="faq-answer"><p class="general-description-text">Sí, ExtraNet ofrece soporte técnico especializado para nuestros usuarios piloto. Contáctanos por WhatsApp para asistencia.</p></div>
+                    <div class="faq-answer">
+                        <p class="general-description-text">Para solicitar una prueba piloto, contáctanos por WhatsApp usando el botón en la página. Nuestro equipo te guiará en el proceso de activación.</p>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Sección Política de Garantía - DESPLEGABLE -->
         <section id="warranty-policy" class="collapsible-section">
             <h3 class="collapsible-header">Política de Garantía y Responsabilidad</h3>
             <div class="collapsible-content">
                 <p class="general-description-text">En ExtraNet, nos esforzamos por ofrecerte la mejor calidad de conexión a internet. Sin embargo, es importante aclarar los límites de nuestra responsabilidad para garantizar una experiencia transparente y justa para todos nuestros usuarios.</p>
                 <ul>
-                    <li><span class="font-semibold text-[#005082]">Condición de Equipos del Usuario:</span> No nos hacemos responsables por el mal estado, configuración incorrecta o incompatibilidad de los equipos propiedad del usuario.</li>
-                    <li><span class="font-semibold text-[#005082]">Cortes Eléctricos y Suministro:</span> Nuestra garantía no cubre interrupciones causadas por cortes de energía eléctrica o problemas relacionados con el suministro eléctrico.</li>
-                    <li><span class="font-semibold text-[#005082]">Inclementes del Clima:</span> No podemos garantizar la continuidad en situaciones extremas provocadas por fenómenos meteorológicos adversos.</li>
-                    <li><span class="font-semibold text-[#005082]">Mantenimiento Programado:</span> Nos reservamos el derecho de realizar mantenimientos programados en nuestra infraestructura.</li>
+                    <li>
+                        <span class="font-semibold text-[#005082]">Condición de Equipos del Usuario:</span> No nos hacemos responsables por el mal estado, configuración incorrecta o incompatibilidad de los equipos de conectividad (routers, módems, dispositivos finales como computadoras, teléfonos, etc.) propiedad del usuario. Para un rendimiento óptimo, recomendamos mantener sus equipos en buen estado y actualizados.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-[#005082]">Cortes Eléctricos y Suministro:</span> Nuestra garantía no cubre interrupciones del servicio causadas por cortes de energía eléctrica en la localidad del usuario o problemas relacionados con el suministro eléctrico que afecten el funcionamiento de nuestros equipos o los del cliente.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-[#005082]">Inclementes del Clima:</span> No podemos garantizar la continuidad del servicio en situaciones extremas provocadas por fenómenos meteorológicos adversos (huracanes, tormentas severas, inundaciones, etc.) que estén fuera de nuestro control y que puedan afectar la infraestructura de red o la capacidad de nuestros técnicos para realizar reparaciones.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-[#005082]">Mantenimiento Programado:</span> Nos reservamos el derecho de realizar mantenimientos programados en nuestra infraestructura para garantizar la calidad y estabilidad del servicio. Estos mantenimientos serán notificados con antelación a nuestros usuarios.
+                    </li>
                 </ul>
                 <p class="general-description-text mt-6">Agradecemos su comprensión y estamos siempre a su disposición para cualquier consulta relacionada con su servicio de internet.</p>
             </div>
         </section>
+        </main>
+
         <footer>
-            <h2>¡Tu Conexión Ideal te Espera!</h2>
-            <p class="general-description-text">No esperes más. Elige tu plan y contáctanos para empezar a disfrutar de una conexión a internet sin límites con ExtraNet.</p>
-            <a href="https://wa.me/16402690073" target="_blank" class="cta-button">
-                Habla con Nosotros por WhatsApp
-            </a>
+             <h2>¡Tu Conexión Ideal te Espera!</h2>
+             <p class="general-description-text">No esperes más. Elige tu plan y contáctanos para empezar a disfrutar de una conexión a internet sin límites con ExtraNet.</p>
+             <a href="https://wa.me/16402690073" target="_blank" class="cta-button">
+                 Habla con Nosotros por WhatsApp
+             </a>
         </footer>
+
     </div>
 </body>
 </html>
